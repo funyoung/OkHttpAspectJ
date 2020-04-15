@@ -43,15 +43,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
 
-        asynchronousGet = (Button) findViewById(R.id.asynchronousGet);
-        synchronousGet = (Button) findViewById(R.id.synchronousGet);
-        asynchronousPOST = (Button) findViewById(R.id.asynchronousPost);
+        asynchronousGet = findViewById(R.id.asynchronousGet);
+        synchronousGet = findViewById(R.id.synchronousGet);
+        asynchronousPOST = findViewById(R.id.asynchronousPost);
 
         asynchronousGet.setOnClickListener(this);
         synchronousGet.setOnClickListener(this);
         asynchronousPOST.setOnClickListener(this);
 
-        txtString = (TextView) findViewById(R.id.txtString);
+        txtString = findViewById(R.id.txtString);
     }
 
     void postRequest(String postUrl, String postBody) throws IOException {
@@ -167,8 +167,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             txtString.setText(s);
         }
     }
-
-
 }
 
 
