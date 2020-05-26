@@ -42,4 +42,16 @@
         android:layout_below="@+id/asynchronousPost"
         android:layout_centerHorizontal="true"
         android:id="@+id/txtString" />
+
+    <EditText
+        android:id="@+id/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+    <Button
+        android:id="@+id/ime_switcher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/edit_text"
+        android:text="切换输入法" />
 </RelativeLayout>
