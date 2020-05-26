@@ -40,14 +40,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button switchButton;
 
-    public String url = "https://reqres.in/api/users/2";
-    public String postUrl = "https://reqres.in/api/users/";
-    public String postBody = "{\n" +
+    public static final String url = "https://reqres.in/api/users/2";
+    public static final String postUrl = "https://reqres.in/api/users/";
+    public static final String postBody = "{\n" +
             "    \"name\": \"morpheus\",\n" +
             "    \"job\": \"leader\"\n" +
             "}";
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+    private UserModel userModel;
+    private StuModel studentModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switchButton.setOnClickListener(this);
 
         txtString = findViewById(R.id.txtString);
+
+        studentModel = new StuModel("Hello S");
+        userModel = new UserModel("Hello M");
     }
 
     void postRequest(String postUrl, String postBody) throws IOException {
