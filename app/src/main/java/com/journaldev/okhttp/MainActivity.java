@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button asynchronousGet, synchronousGet, asynchronousPOST;
 
     private Button switchButton;
+    private TextView durationText;
 
     public static final String url = "https://reqres.in/api/users/2";
     public static final String postUrl = "https://reqres.in/api/users/";
@@ -63,12 +64,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         asynchronousPOST = findViewById(R.id.asynchronousPost);
 
         switchButton = findViewById(R.id.ime_switcher);
+        durationText = findViewById(R.id.ime_duration);
 
         asynchronousGet.setOnClickListener(this);
         synchronousGet.setOnClickListener(this);
         asynchronousPOST.setOnClickListener(this);
 
         switchButton.setOnClickListener(this);
+        durationText.setOnClickListener(this);
 
         txtString = findViewById(R.id.txtString);
 
@@ -160,6 +163,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.ime_switcher:
+            case R.id.ime_duration:
                 if (isstop || 0 == startStamp) {
                     ((InputMethodManager)MainActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE)).showInputMethodPicker();
                 } else {
@@ -247,11 +251,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (isstop) {
             appendTrack();
             String displayText = String.format("切换输入法(%d'%d\")", difference / 1000, difference % 1000);
-            switchButton.setText(displayText);
+            durationText.setText(displayText);
         } else {
             nextTimer();
             String displayText = String.format("%d'%d\"", difference / 1000, difference % 1000);
-            switchButton.setText(displayText);
+            durationText.setText(displayText);
         }
     }
 
