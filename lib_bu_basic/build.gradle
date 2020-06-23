@@ -1,0 +1,76 @@
+apply plugin: 'com.android.library'
+
+// 引入aspectj
+//apply plugin: 'slog-plugin'
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "http://maven.sogou/nexus/content/repositories/releases/"
+        }
+
+    }
+    dependencies {
+        classpath 'com.slog.plugin:slog-plugin:1.1'
+    }
+}
+
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        consumerProguardFiles 'proguard-rules.pro'
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        lintConfig file("../backup/lint_report_mail/sogou_lint.xml")
+        xmlOutput file("build/outputs/SogouInput_Lint_Report.xml")
+        htmlOutput file("build/outputs/SogouInput_Lint_Report.html")
+        baseline file("baseline_lint.xml")
+    }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+}
+
+dependencies {
+    api fileTree(includes: ['*.jar'], dir:'libs')
+//    api rootProject.ext.sogouencryption
+//    api(rootProject.ext.Lottie) {
+//        exclude group: 'com.android.support', module: 'appcompat-v7'
+//    }
+//    implementation files('libs/linearmotor-1.0.2-sougou.jar')
+//    compileOnly rootProject.ext.input_debug_common
+//    api rootProject.ext.lib_common
+//    api rootProject.ext.lib_async
+//    api rootProject.ext.lib_pingback
+//    implementation project(path: ':common_data_model')
+
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.8.11'
+    testImplementation "org.robolectric:robolectric:3.8"
+    testImplementation 'org.powermock:powermock-module-junit4:2.0.0'
+    testImplementation 'org.powermock:powermock-api-mockito2:2.0.0'
+
+
+    androidTestImplementation('com.android.support.test:rules:1.0.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    androidTestImplementation('com.android.support.test:runner:1.0.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:+', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+}
