@@ -91,10 +91,12 @@ public class IniFileLite implements INIFile {
      * Returns the ini file name being used.
      * @return the INI file name.
      */
+    @Override
     public String getFileName() {
         return this.mstrFile;
     }
-    
+
+    @Override
     public void setFileName(String fileName) {
         mstrFile = fileName;
     }
@@ -105,14 +107,12 @@ public class IniFileLite implements INIFile {
      * @param pstrProp the property to be retrieved.
      * @return the string property value.
      */
+    @Override
     public String getStringProperty(String pstrSection, String pstrProp) {
         String strRet = null;
-        INISection objSec = null;
-
-        objSec = this.mhmapSections.get(pstrSection);
+        INISection objSec = this.mhmapSections.get(pstrSection);
         if (objSec != null) {
             strRet = objSec.getProperty(pstrProp);
-            objSec = null;
         }
         return strRet;
     }
@@ -132,11 +132,10 @@ public class IniFileLite implements INIFile {
      * @param pstrProp the property to be retrieved.
      * @return the boolean value
      */
+    @Override
     public Boolean getBooleanProperty(String pstrSection, String pstrProp) {
         Boolean blnRet = null;
-        INISection objSec = null;
-
-        objSec = this.mhmapSections.get(pstrSection);
+        INISection objSec = this.mhmapSections.get(pstrSection);
         if (objSec != null) {
             String objProp = objSec.getProperty(pstrProp);
             if (objProp != null) {
@@ -153,12 +152,11 @@ public class IniFileLite implements INIFile {
      * @param pstrProp the property to be retrieved.
      * @return the integer property value.
      */
+    @Override
     public Integer getIntegerProperty(String pstrSection, String pstrProp) {
         Integer intRet = null;
         String objProp = null;
-        INISection objSec = null;
-
-        objSec = this.mhmapSections.get(pstrSection);
+        INISection objSec = this.mhmapSections.get(pstrSection);
         if (objSec != null) {
             objProp = objSec.getProperty(pstrProp);
             try {
@@ -189,12 +187,11 @@ public class IniFileLite implements INIFile {
      * @param pstrProp the property to be retrieved.
      * @return the long property value.
      */
+    @Override
     public Long getLongProperty(String pstrSection, String pstrProp) {
         Long lngRet = null;
         String strVal = null;
-        INISection objSec = null;
-
-        objSec = this.mhmapSections.get(pstrSection);
+        INISection objSec = this.mhmapSections.get(pstrSection);
         if (objSec != null) {
             strVal = objSec.getProperty(pstrProp);
             try {
@@ -217,12 +214,11 @@ public class IniFileLite implements INIFile {
      * @param pstrProp the property to be retrieved.
      * @return the double property value.
      */
+    @Override
     public Double getDoubleProperty(String pstrSection, String pstrProp) {
         Double dblRet = null;
         String strVal = null;
-        INISection objSec = null;
-
-        objSec = this.mhmapSections.get(pstrSection);
+        INISection objSec = this.mhmapSections.get(pstrSection);
         if (objSec != null) {
             strVal = objSec.getProperty(pstrProp);
             try {
@@ -242,12 +238,11 @@ public class IniFileLite implements INIFile {
      * @param pstrProp the property to be retrieved.
      * @return the float property value.
      */
+    @Override
     public Float getFloatProperty(String pstrSection, String pstrProp) {
         Float dblRet = null;
         String strVal = null;
-        INISection objSec = null;
-
-        objSec = this.mhmapSections.get(pstrSection);
+        INISection objSec = this.mhmapSections.get(pstrSection);
         if (objSec != null) {
             strVal = objSec.getProperty(pstrProp);
             try {
@@ -269,6 +264,7 @@ public class IniFileLite implements INIFile {
      * @param pstrSection the section name
      * @param pstrComments the comments.
      */
+    @Override
     public void addSection(String pstrSection, String pstrComments) {
         INISection objSec = this.mhmapSections.get(pstrSection);
         if (objSec == null) {
@@ -283,11 +279,10 @@ public class IniFileLite implements INIFile {
      * @param pstrProp the property to be set.
      * @pstrVal the string value to be persisted
      */
+    @Override
     public void setStringProperty(String pstrSection, String pstrProp,
                                   String pstrVal, String pstrComments) {
-        INISection objSec = null;
-
-        objSec = this.mhmapSections.get(pstrSection);
+        INISection objSec = this.mhmapSections.get(pstrSection);
         if (objSec == null) {
             objSec = new INISection();
             this.mhmapSections.put(pstrSection, objSec);
@@ -301,11 +296,10 @@ public class IniFileLite implements INIFile {
      * @param pstrProp the property to be set.
      * @param pblnVal the boolean value to be persisted
      */
+    @Override
     public void setBooleanProperty(String pstrSection, String pstrProp,
                                    boolean pblnVal, String pstrComments) {
-        INISection objSec = null;
-
-        objSec = this.mhmapSections.get(pstrSection);
+        INISection objSec = this.mhmapSections.get(pstrSection);
         if (objSec == null) {
             objSec = new INISection();
             this.mhmapSections.put(pstrSection, objSec);
@@ -324,11 +318,10 @@ public class IniFileLite implements INIFile {
      * @param pstrProp the property to be set.
      * @param pintVal the int property to be persisted.
      */
+    @Override
     public void setIntegerProperty(String pstrSection, String pstrProp,
                                    int pintVal, String pstrComments) {
-        INISection objSec = null;
-
-        objSec = this.mhmapSections.get(pstrSection);
+        INISection objSec = this.mhmapSections.get(pstrSection);
         if (objSec == null) {
             objSec = new INISection();
             this.mhmapSections.put(pstrSection, objSec);
@@ -342,6 +335,7 @@ public class IniFileLite implements INIFile {
      * @param pstrProp the property to be set.
      * @param plngVal the long value to be persisted.
      */
+    @Override
     public void setLongProperty(String pstrSection, String pstrProp,
                                 long plngVal, String pstrComments) {
         INISection objSec = this.mhmapSections.get(pstrSection);
@@ -358,6 +352,7 @@ public class IniFileLite implements INIFile {
      * @param pstrProp the property to be set.
      * @param pdblVal the double value to be persisted.
      */
+    @Override
     public void setDoubleProperty(String pstrSection, String pstrProp,
                                   double pdblVal, String pstrComments) {
         INISection objSec = this.mhmapSections.get(pstrSection);
@@ -371,10 +366,12 @@ public class IniFileLite implements INIFile {
     /*------------------------------------------------------------------------------
      * Public methods
      ------------------------------------------------------------------------------*/
+    @Override
     public boolean containSection(String pstrSection) {
         return this.mhmapSections.containsKey(pstrSection);
     }
 
+    @Override
     public boolean containProperty(String pstrSection, String pstrProp) {
         boolean ret = false;
         INISection objSec = this.mhmapSections.get(pstrSection);
@@ -384,6 +381,7 @@ public class IniFileLite implements INIFile {
         return ret;
     }
 
+    @Override
     public int getTotalSections() {
         return this.mhmapSections.size();
     }
@@ -392,6 +390,7 @@ public class IniFileLite implements INIFile {
      * Returns a string array containing names of all sections in INI file.
      * @return the string array of section names
      */
+    @Override
     public String[] getAllSectionNames() {
         int iCntr = 0;
         Iterator iter = null;
@@ -421,6 +420,7 @@ public class IniFileLite implements INIFile {
      * @param pstrSection the name of the section for which names of properties is to be retrieved.
      * @return the string array of property names.
      */
+    @Override
     public String[] getPropertyNames(String pstrSection) {
         String[] arrRet = null;
         INISection objSec = this.mhmapSections.get(pstrSection);
@@ -435,6 +435,7 @@ public class IniFileLite implements INIFile {
      * @param pstrSection the name of the section for which properties are to be retrieved.
      * @return the map of properties.
      */
+    @Override
     public Map getProperties(String pstrSection) {
         Map hmRet = null;
         INISection objSec = this.mhmapSections.get(pstrSection);
@@ -450,6 +451,7 @@ public class IniFileLite implements INIFile {
      * @param pstrSection the section name.
      * @param pstrProp the name of the property to be removed.
      */
+    @Override
     public void removeProperty(String pstrSection, String pstrProp) {
         INISection objSec = this.mhmapSections.get(pstrSection);
         if (objSec != null) {
@@ -461,6 +463,7 @@ public class IniFileLite implements INIFile {
      * Removes the specified section if one exists, otherwise does nothing.
      * @param pstrSection the name of the section to be removed.
      */
+    @Override
     public void removeSection(String pstrSection) {
         this.mhmapSections.remove(pstrSection);
     }
@@ -469,6 +472,7 @@ public class IniFileLite implements INIFile {
      * Flush changes back to the disk file. If the disk file does not exists then
      * creates the new one.
      */
+    @Override
     public boolean save() {
         boolean blnRet = false;
         File objFile = null;
