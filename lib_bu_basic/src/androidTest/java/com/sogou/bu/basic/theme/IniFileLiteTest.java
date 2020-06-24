@@ -11,11 +11,13 @@ import org.junit.runner.RunWith;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -29,6 +31,17 @@ public class IniFileLiteTest {
     private static final String SECTION_THEME_INFO = "ThemeInfo";
     private static final String SECTION_MORE_CAND = "MoreCandsContainerInfo";
     private static final String SECTION_SYMBOL_MORE = "SymbolInfo";
+
+    private static final String FG_STYLE = "FG_STYLE";
+    private static final String KEY_FG_STYLE = "FGStyle";
+
+    private static final String NAME = "NAME";
+    private static final String THEME_NAME = "默认皮肤";
+
+    private static final String FILTER_ITEM_W = "Filter_Item_W";
+    private static final String HIDE_FILTER_BAR = "Hide_Filter_Bar";
+
+    private static final String BUTTON_H_GAP = "Button_H_Gap";
 
     private static final String SECTION_FOREIGN_COMPONENT_KEY = "FOREIGN_COMPONENT";
 
@@ -67,6 +80,14 @@ public class IniFileLiteTest {
     }
 
     @Test
+    public void getFileNameTest() throws Exception {
+        assertNull("通过InputStream打开，文件名为空。", template.getFileName());
+        assertNull("通过InputStream打开，文件名为空。", theme.getFileName());
+        assertNull("通过InputStream打开，文件名为空。", candidate.getFileName());
+        assertNull("通过InputStream打开，文件名为空。", symbol.getFileName());
+    }
+
+    @Test
     public void containSectionTest() throws Exception {
         assertTrue("模板配置应包含Key配置。", template.containSection(SECTION_KEY));
         assertTrue("皮肤配置应包含ThemeInfo配置", theme.containSection(SECTION_THEME_INFO));
@@ -75,11 +96,54 @@ public class IniFileLiteTest {
     }
 
     @Test
-    public void getTotalSectionsTest() throws Exception {
-        assertTrue(template.getTotalSections() == 499);
-        assertTrue(theme.getTotalSections() == 3);
-        assertTrue(candidate.getTotalSections() == 7);
-        assertTrue(symbol.getTotalSections() == 3);
+    public void getStringPropertyTest() throws Exception {
+        assertEquals(KEY_FG_STYLE, template.getStringProperty(SECTION_KEY, FG_STYLE));
+        assertEquals(THEME_NAME, theme.getStringProperty(SECTION_THEME_INFO, NAME));
+        assertEquals("0", candidate.getStringProperty(SECTION_MORE_CAND, FILTER_ITEM_W));
+        assertEquals("0", symbol.getStringProperty(SECTION_SYMBOL_MORE, BUTTON_H_GAP));
+    }
+
+    @Test
+    public void getBooleanPropertyTest() throws Exception {
+        assertFalse(candidate.getBooleanProperty(SECTION_MORE_CAND, HIDE_FILTER_BAR));
+    }
+
+    @Test
+    public void getIntegerPropertyTest() throws Exception {
+        assertEquals(0, (int)candidate.getIntegerProperty(SECTION_MORE_CAND, HIDE_FILTER_BAR));
+    }
+
+    @Test
+    public void getLongPropertyTest() throws Exception {
+        INIFile iniFile = helper.getCandidateFile(false);
+        assertEquals(0xFFC8E0E8, (long)iniFile.getLongProperty("CloudView", "BG_COLOR"));
+    }
+
+    @Test
+    public void containPropertyTest() {
+        assertTrue(template.containProperty(SECTION_KEY, FG_STYLE));
+    }
+
+    @Test
+    public void getPropertiesTest() {
+        Set<String> sections = template.getProperties(SECTION_KEY).keySet();
+        assertEquals("模板中Key配有9个键值对。", 9, sections.size());
+        assertTrue(sections.contains(FG_STYLE));
+    }
+
+    @Test
+    public void removeSectionTest() {
+        int count = template.getAllSectionNames().length;
+        template.removeSection(SECTION_KEY);
+        assertEquals("删除1个section后的section总数减少1个。", count - 1, template.getAllSectionNames().length);
+    }
+
+    @Test
+    public void getAllSectionLengthTest() throws Exception {
+        assertTrue(template.getAllSectionNames().length == 499);
+        assertTrue(theme.getAllSectionNames().length == 3);
+        assertTrue(candidate.getAllSectionNames().length == 7);
+        assertTrue(symbol.getAllSectionNames().length == 3);
     }
 
     @Test

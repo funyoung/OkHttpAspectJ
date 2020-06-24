@@ -96,10 +96,10 @@ public class IniFileLite implements INIFile {
         return this.mstrFile;
     }
 
-    @Override
-    public void setFileName(String fileName) {
-        mstrFile = fileName;
-    }
+//    @Override
+//    public void setFileName(String fileName) {
+//        mstrFile = fileName;
+//    }
 
     /**
      * Returns the specified string property from the specified section.
@@ -256,112 +256,112 @@ public class IniFileLite implements INIFile {
         return dblRet;
     }
 
-    /*------------------------------------------------------------------------------
-     * Setters
-     ------------------------------------------------------------------------------*/
-    /**
-     * Sets the comments associated with a section.
-     * @param pstrSection the section name
-     * @param pstrComments the comments.
-     */
-    @Override
-    public void addSection(String pstrSection, String pstrComments) {
-        INISection objSec = this.mhmapSections.get(pstrSection);
-        if (objSec == null) {
-            objSec = new INISection();
-            this.mhmapSections.put(pstrSection, objSec);
-        }
-    }
+//    /*------------------------------------------------------------------------------
+//     * Setters
+//     ------------------------------------------------------------------------------*/
+//    /**
+//     * Sets the comments associated with a section.
+//     * @param pstrSection the section name
+//     * @param pstrComments the comments.
+//     */
+//    @Override
+//    public void addSection(String pstrSection, String pstrComments) {
+//        INISection objSec = this.mhmapSections.get(pstrSection);
+//        if (objSec == null) {
+//            objSec = new INISection();
+//            this.mhmapSections.put(pstrSection, objSec);
+//        }
+//    }
 
-    /**
-     * Sets the specified string property.
-     * @param pstrSection the INI section name.
-     * @param pstrProp the property to be set.
-     * @pstrVal the string value to be persisted
-     */
-    @Override
-    public void setStringProperty(String pstrSection, String pstrProp,
-                                  String pstrVal, String pstrComments) {
-        INISection objSec = this.mhmapSections.get(pstrSection);
-        if (objSec == null) {
-            objSec = new INISection();
-            this.mhmapSections.put(pstrSection, objSec);
-        }
-        objSec.setProperty(pstrProp, pstrVal, pstrComments);
-    }
+//    /**
+//     * Sets the specified string property.
+//     * @param pstrSection the INI section name.
+//     * @param pstrProp the property to be set.
+//     * @pstrVal the string value to be persisted
+//     */
+//    @Override
+//    public void setStringProperty(String pstrSection, String pstrProp,
+//                                  String pstrVal, String pstrComments) {
+//        INISection objSec = this.mhmapSections.get(pstrSection);
+//        if (objSec == null) {
+//            objSec = new INISection();
+//            this.mhmapSections.put(pstrSection, objSec);
+//        }
+//        objSec.setProperty(pstrProp, pstrVal, pstrComments);
+//    }
 
-    /**
-     * Sets the specified boolean property.
-     * @param pstrSection the INI section name.
-     * @param pstrProp the property to be set.
-     * @param pblnVal the boolean value to be persisted
-     */
-    @Override
-    public void setBooleanProperty(String pstrSection, String pstrProp,
-                                   boolean pblnVal, String pstrComments) {
-        INISection objSec = this.mhmapSections.get(pstrSection);
-        if (objSec == null) {
-            objSec = new INISection();
-            this.mhmapSections.put(pstrSection, objSec);
-        }
-        if (pblnVal) {
-            objSec.setProperty(pstrProp, "TRUE", pstrComments);
-        }
-        else {
-            objSec.setProperty(pstrProp, "FALSE", pstrComments);
-        }
-    }
+//    /**
+//     * Sets the specified boolean property.
+//     * @param pstrSection the INI section name.
+//     * @param pstrProp the property to be set.
+//     * @param pblnVal the boolean value to be persisted
+//     */
+//    @Override
+//    public void setBooleanProperty(String pstrSection, String pstrProp,
+//                                   boolean pblnVal, String pstrComments) {
+//        INISection objSec = this.mhmapSections.get(pstrSection);
+//        if (objSec == null) {
+//            objSec = new INISection();
+//            this.mhmapSections.put(pstrSection, objSec);
+//        }
+//        if (pblnVal) {
+//            objSec.setProperty(pstrProp, "TRUE", pstrComments);
+//        }
+//        else {
+//            objSec.setProperty(pstrProp, "FALSE", pstrComments);
+//        }
+//    }
 
-    /**
-     * Sets the specified integer property.
-     * @param pstrSection the INI section name.
-     * @param pstrProp the property to be set.
-     * @param pintVal the int property to be persisted.
-     */
-    @Override
-    public void setIntegerProperty(String pstrSection, String pstrProp,
-                                   int pintVal, String pstrComments) {
-        INISection objSec = this.mhmapSections.get(pstrSection);
-        if (objSec == null) {
-            objSec = new INISection();
-            this.mhmapSections.put(pstrSection, objSec);
-        }
-        objSec.setProperty(pstrProp, Integer.toString(pintVal), pstrComments);
-    }
+//    /**
+//     * Sets the specified integer property.
+//     * @param pstrSection the INI section name.
+//     * @param pstrProp the property to be set.
+//     * @param pintVal the int property to be persisted.
+//     */
+//    @Override
+//    public void setIntegerProperty(String pstrSection, String pstrProp,
+//                                   int pintVal, String pstrComments) {
+//        INISection objSec = this.mhmapSections.get(pstrSection);
+//        if (objSec == null) {
+//            objSec = new INISection();
+//            this.mhmapSections.put(pstrSection, objSec);
+//        }
+//        objSec.setProperty(pstrProp, Integer.toString(pintVal), pstrComments);
+//    }
 
-    /**
-     * Sets the specified long property.
-     * @param pstrSection the INI section name.
-     * @param pstrProp the property to be set.
-     * @param plngVal the long value to be persisted.
-     */
-    @Override
-    public void setLongProperty(String pstrSection, String pstrProp,
-                                long plngVal, String pstrComments) {
-        INISection objSec = this.mhmapSections.get(pstrSection);
-        if (objSec == null) {
-            objSec = new INISection();
-            this.mhmapSections.put(pstrSection, objSec);
-        }
-        objSec.setProperty(pstrProp, Long.toString(plngVal), pstrComments);
-    }
+//    /**
+//     * Sets the specified long property.
+//     * @param pstrSection the INI section name.
+//     * @param pstrProp the property to be set.
+//     * @param plngVal the long value to be persisted.
+//     */
+//    @Override
+//    public void setLongProperty(String pstrSection, String pstrProp,
+//                                long plngVal, String pstrComments) {
+//        INISection objSec = this.mhmapSections.get(pstrSection);
+//        if (objSec == null) {
+//            objSec = new INISection();
+//            this.mhmapSections.put(pstrSection, objSec);
+//        }
+//        objSec.setProperty(pstrProp, Long.toString(plngVal), pstrComments);
+//    }
 
-    /**
-     * Sets the specified double property.
-     * @param pstrSection the INI section name.
-     * @param pstrProp the property to be set.
-     * @param pdblVal the double value to be persisted.
-     */
-    @Override
-    public void setDoubleProperty(String pstrSection, String pstrProp,
-                                  double pdblVal, String pstrComments) {
-        INISection objSec = this.mhmapSections.get(pstrSection);
-        if (objSec == null) {
-            objSec = new INISection();
-            this.mhmapSections.put(pstrSection, objSec);
-        }
-        objSec.setProperty(pstrProp, Double.toString(pdblVal), pstrComments);
-    }
+//    /**
+//     * Sets the specified double property.
+//     * @param pstrSection the INI section name.
+//     * @param pstrProp the property to be set.
+//     * @param pdblVal the double value to be persisted.
+//     */
+//    @Override
+//    public void setDoubleProperty(String pstrSection, String pstrProp,
+//                                  double pdblVal, String pstrComments) {
+//        INISection objSec = this.mhmapSections.get(pstrSection);
+//        if (objSec == null) {
+//            objSec = new INISection();
+//            this.mhmapSections.put(pstrSection, objSec);
+//        }
+//        objSec.setProperty(pstrProp, Double.toString(pdblVal), pstrComments);
+//    }
 
     /*------------------------------------------------------------------------------
      * Public methods
@@ -381,10 +381,10 @@ public class IniFileLite implements INIFile {
         return ret;
     }
 
-    @Override
-    public int getTotalSections() {
-        return this.mhmapSections.size();
-    }
+//    @Override
+//    public int getTotalSections() {
+//        return this.mhmapSections.size();
+//    }
 
     /**
      * Returns a string array containing names of all sections in INI file.
@@ -445,19 +445,19 @@ public class IniFileLite implements INIFile {
         return hmRet;
     }
 
-    /**
-     * Removed specified property from the specified section. If the specified
-     * section or the property does not exist, does nothing.
-     * @param pstrSection the section name.
-     * @param pstrProp the name of the property to be removed.
-     */
-    @Override
-    public void removeProperty(String pstrSection, String pstrProp) {
-        INISection objSec = this.mhmapSections.get(pstrSection);
-        if (objSec != null) {
-            objSec.removeProperty(pstrProp);
-        }
-    }
+//    /**
+//     * Removed specified property from the specified section. If the specified
+//     * section or the property does not exist, does nothing.
+//     * @param pstrSection the section name.
+//     * @param pstrProp the name of the property to be removed.
+//     */
+//    @Override
+//    public void removeProperty(String pstrSection, String pstrProp) {
+//        INISection objSec = this.mhmapSections.get(pstrSection);
+//        if (objSec != null) {
+//            objSec.removeProperty(pstrProp);
+//        }
+//    }
 
     /**
      * Removes the specified section if one exists, otherwise does nothing.
@@ -468,57 +468,57 @@ public class IniFileLite implements INIFile {
         this.mhmapSections.remove(pstrSection);
     }
 
-    /**
-     * Flush changes back to the disk file. If the disk file does not exists then
-     * creates the new one.
-     */
-    @Override
-    public boolean save() {
-        boolean blnRet = false;
-        File objFile = null;
-        String strName = null;
-        String strTemp = null;
-        Iterator itrSec = null;
-        INISection objSec = null;
-        FileWriter objWriter = null;
-
-        try {
-            if (this.mhmapSections.size() == 0) {
-                return false;
-            }
-            objFile = new File(this.mstrFile);
-            if (objFile.exists()) {
-                objFile.delete();
-            }
-            objWriter = new FileWriter(objFile);
-            itrSec = this.mhmapSections.keySet().iterator();
-            while (itrSec.hasNext()) {
-                strName = (String) itrSec.next();
-                objSec = this.mhmapSections.get(strName);
-                strTemp = objSec.toString();
-                objWriter.write(strTemp);
-                objWriter.write("\r\n");
-                objSec = null;
-            }
-            blnRet = true;
-        }
-        catch (IOException IOExIgnore) {
-        } catch (Exception e) {
-        }
-        finally {
-            if (objWriter != null) {
-                closeWriter(objWriter);
-                objWriter = null;
-            }
-            if (objFile != null) {
-                objFile = null;
-            }
-            if (itrSec != null) {
-                itrSec = null;
-            }
-        }
-        return blnRet;
-    }
+//    /**
+//     * Flush changes back to the disk file. If the disk file does not exists then
+//     * creates the new one.
+//     */
+//    @Override
+//    public boolean save() {
+//        boolean blnRet = false;
+//        File objFile = null;
+//        String strName = null;
+//        String strTemp = null;
+//        Iterator itrSec = null;
+//        INISection objSec = null;
+//        FileWriter objWriter = null;
+//
+//        try {
+//            if (this.mhmapSections.size() == 0) {
+//                return false;
+//            }
+//            objFile = new File(this.mstrFile);
+//            if (objFile.exists()) {
+//                objFile.delete();
+//            }
+//            objWriter = new FileWriter(objFile);
+//            itrSec = this.mhmapSections.keySet().iterator();
+//            while (itrSec.hasNext()) {
+//                strName = (String) itrSec.next();
+//                objSec = this.mhmapSections.get(strName);
+//                strTemp = objSec.toString();
+//                objWriter.write(strTemp);
+//                objWriter.write("\r\n");
+//                objSec = null;
+//            }
+//            blnRet = true;
+//        }
+//        catch (IOException IOExIgnore) {
+//        } catch (Exception e) {
+//        }
+//        finally {
+//            if (objWriter != null) {
+//                closeWriter(objWriter);
+//                objWriter = null;
+//            }
+//            if (objFile != null) {
+//                objFile = null;
+//            }
+//            if (itrSec != null) {
+//                itrSec = null;
+//            }
+//        }
+//        return blnRet;
+//    }
 
     @Override
     public void loadForeignComponentsSet(Map<CharSequence, CharSequence> foreignComponents, String section, String extraPrefix) {

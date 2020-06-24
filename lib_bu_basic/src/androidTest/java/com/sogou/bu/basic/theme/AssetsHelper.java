@@ -10,6 +10,7 @@ import java.io.InputStream;
  */
 public class AssetsHelper {
     private static final String FILE_THEME = "theme/theme.ini";
+    private static final String FILE_CANDIDATE = "theme/cands.ini";
     private static final String FILE_MORE_CANDIDATE = "MoreCandsIni/MoreCandsContainer.ini";
     private static final String FILE_SYMBOL_MORE_CANDIDATE = "MoreCandsIni/SymbolAndHWBihuaMoreCands.ini";
     private static final String FILE_TEMPLATE = "theme/template.ini";
@@ -24,6 +25,10 @@ public class AssetsHelper {
 
     public INIFile getThemeFile(boolean legacy) throws IOException {
         return getIniFile(FILE_THEME, legacy);
+    }
+
+    public INIFile getCandidateFile(boolean legacy) throws IOException {
+        return getIniFile(FILE_CANDIDATE, legacy);
     }
 
     private INIFile getIniFile(String path, boolean legacy) throws IOException {

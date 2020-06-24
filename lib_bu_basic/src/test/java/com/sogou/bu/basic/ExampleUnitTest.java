@@ -86,6 +86,43 @@ public class ExampleUnitTest {
             }
         }
     }
+
+    /**
+     * 21. Merge Two Sorted Lists
+     * Input: 1->2->4, 1->3->4
+     * Output: 1->1->2->3->4->4
+     * @throws Exception
+     */
+    @Test
+    public void mergeTwoListsTest() throws Exception {
+        int[] a = {1, 2, 4};
+        int[] b = {1, 3, 4};
+        int[] c = {1, 1, 2, 3, 4, 4};
+        ListNode l1 = buildList(a);
+        ListNode l2 = buildList(b);
+        assertList(new Solution().mergeTwoLists(l1, l2), c);
+    }
+
+    /**
+     * 82. Remove Duplicates from Sorted List II
+     * Input: 1->2->3->3->4->4->5
+     * Output: 1->2->5
+     * Input: 1->1->1->2->3
+     * Output: 2->3
+     * @throws Exception
+     */
+    @Test
+    public void deleteDuplicatesTest() throws Exception {
+        int[] a = {1, 2, 3, 3, 4, 4, 5};
+        int[] ra = {1, 2, 5};
+        ListNode la = buildList(a);
+        assertList(new Solution().deleteDuplicates(la), ra);
+
+        int[] b = {1, 1, 1, 2, 3};
+        int[] rb = {2, 3};
+        ListNode lb = buildList(b);
+        assertList(new Solution().deleteDuplicates(lb), rb);
+    }
 }
 /**
  * Definition for singly-linked list.
@@ -208,5 +245,67 @@ class Solution {
             }
         }
         return count;
+    }
+
+    // 82. Remove Duplicates from Sorted List II
+    public ListNode deleteDuplicates(ListNode head) {
+        if (null == head) {
+            return null;
+        }
+
+        ListNode preHead = new ListNode(0, head);
+        ListNode prev = preHead;
+
+        ListNode cur = head;
+        ListNode next = head.next;
+        boolean duplicate = false;
+        while (null != next) {
+            if (cur.val == next.val) {
+                duplicate = true;
+            } else {
+                if (!duplicate) {
+                    prev.next = cur;
+                    prev = prev.next;
+                }
+
+                duplicate = false;
+                cur = next;
+            }
+
+            next = next.next;
+        }
+
+        if (!duplicate) {
+            prev.next = cur;
+        }
+
+        return preHead.next;
+    }
+
+    // 21. Merge Two Sorted Lists
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode prefix = new ListNode();
+        ListNode cur = prefix;
+        while (null != l1 || null != l2) {
+            if (null == l1) {
+                cur.next = l2;
+                l2 = null;
+            } else if (null == l2) {
+                cur.next = l1;
+                l1 = null;
+            } else {
+                if (l1.val < l2.val) {
+                    cur.next = l1;
+                    l1 = l1.next;
+                    cur = cur.next;
+                } else {
+                    cur.next = l2;
+                    l2 = l2.next;
+                    cur = cur.next;
+                }
+            }
+        }
+
+        return prefix.next;
     }
 }

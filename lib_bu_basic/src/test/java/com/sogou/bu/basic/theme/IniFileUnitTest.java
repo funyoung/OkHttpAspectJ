@@ -77,8 +77,8 @@ public class IniFileUnitTest {
         INIFile legacy = helper.getMoreCandidateFile(true);
         INIFile iniFile = helper.getMoreCandidateFile(false);
         assertNotNull(iniFile);
-        assertEquals("两种解析方式更多候选配置得到section数相同。", legacy.getTotalSections(), iniFile.getTotalSections());
-        assertTrue("两种解析方式更多候选配置得到section数大于0.", iniFile.getTotalSections() > 0);
+        assertArrayEquals("两种解析方式更多候选配置得到section数相同。", legacy.getAllSectionNames(), iniFile.getAllSectionNames());
+        assertTrue("两种解析方式更多候选配置得到section数大于0.", iniFile.getAllSectionNames().length > 0);
     }
 
     @Test
@@ -86,8 +86,8 @@ public class IniFileUnitTest {
         INIFile legacy = helper.getSymbolMoreCandidateFile(true);
         INIFile iniFile = helper.getSymbolMoreCandidateFile(false);
         assertNotNull(iniFile);
-        assertEquals("两种解析方式符号键盘更多候选配置得到section数相同。", legacy.getTotalSections(), iniFile.getTotalSections());
-        assertTrue("两种解析方式符号键盘更多候选配置得到section数大于0.", iniFile.getTotalSections() > 0);
+        assertArrayEquals("两种解析方式符号键盘更多候选配置得到section数相同。", legacy.getAllSectionNames(), iniFile.getAllSectionNames());
+        assertTrue("两种解析方式符号键盘更多候选配置得到section数大于0.", iniFile.getAllSectionNames().length > 0);
     }
 
     private Map loadForeignComponentSet(boolean legacy, boolean isFloatModeOnPad) {

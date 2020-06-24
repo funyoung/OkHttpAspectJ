@@ -34,7 +34,7 @@ public interface INIFile {
      */
     String getFileName();
     
-    void setFileName(String fileName);
+//    void setFileName(String fileName);
 
     /**
      * Returns the specified string property from the specified section.
@@ -96,57 +96,57 @@ public interface INIFile {
     /*------------------------------------------------------------------------------
      * Setters
      ------------------------------------------------------------------------------*/
-    /**
-     * Sets the comments associated with a section.
-     * @param pstrSection the section name
-     * @param pstrComments the comments.
-     */
-    void addSection(String pstrSection, String pstrComments);
+//    /**
+//     * Sets the comments associated with a section.
+//     * @param pstrSection the section name
+//     * @param pstrComments the comments.
+//     */
+//    void addSection(String pstrSection, String pstrComments);
 
-    /**
-     * Sets the specified string property.
-     * @param pstrSection the INI section name.
-     * @param pstrProp the property to be set.
-     * @pstrVal the string value to be persisted
-     */
-    void setStringProperty(String pstrSection, String pstrProp,
-                                  String pstrVal, String pstrComments);
+//    /**
+//     * Sets the specified string property.
+//     * @param pstrSection the INI section name.
+//     * @param pstrProp the property to be set.
+//     * @pstrVal the string value to be persisted
+//     */
+//    void setStringProperty(String pstrSection, String pstrProp,
+//                           String pstrVal, String pstrComments);
 
-    /**
-     * Sets the specified boolean property.
-     * @param pstrSection the INI section name.
-     * @param pstrProp the property to be set.
-     * @param pblnVal the boolean value to be persisted
-     */
-    void setBooleanProperty(String pstrSection, String pstrProp,
-                                   boolean pblnVal, String pstrComments);
+//    /**
+//     * Sets the specified boolean property.
+//     * @param pstrSection the INI section name.
+//     * @param pstrProp the property to be set.
+//     * @param pblnVal the boolean value to be persisted
+//     */
+//    void setBooleanProperty(String pstrSection, String pstrProp,
+//                            boolean pblnVal, String pstrComments);
 
-    /**
-     * Sets the specified integer property.
-     * @param pstrSection the INI section name.
-     * @param pstrProp the property to be set.
-     * @param pintVal the int property to be persisted.
-     */
-    void setIntegerProperty(String pstrSection, String pstrProp,
-                                   int pintVal, String pstrComments);
+//    /**
+//     * Sets the specified integer property.
+//     * @param pstrSection the INI section name.
+//     * @param pstrProp the property to be set.
+//     * @param pintVal the int property to be persisted.
+//     */
+//    void setIntegerProperty(String pstrSection, String pstrProp,
+//                            int pintVal, String pstrComments);
 
-    /**
-     * Sets the specified long property.
-     * @param pstrSection the INI section name.
-     * @param pstrProp the property to be set.
-     * @param plngVal the long value to be persisted.
-     */
-    void setLongProperty(String pstrSection, String pstrProp,
-                                long plngVal, String pstrComments);
+//    /**
+//     * Sets the specified long property.
+//     * @param pstrSection the INI section name.
+//     * @param pstrProp the property to be set.
+//     * @param plngVal the long value to be persisted.
+//     */
+//    void setLongProperty(String pstrSection, String pstrProp,
+//                         long plngVal, String pstrComments);
 
-    /**
-     * Sets the specified double property.
-     * @param pstrSection the INI section name.
-     * @param pstrProp the property to be set.
-     * @param pdblVal the double value to be persisted.
-     */
-    void setDoubleProperty(String pstrSection, String pstrProp,
-                                  double pdblVal, String pstrComments);
+//    /**
+//     * Sets the specified double property.
+//     * @param pstrSection the INI section name.
+//     * @param pstrProp the property to be set.
+//     * @param pdblVal the double value to be persisted.
+//     */
+//    void setDoubleProperty(String pstrSection, String pstrProp,
+//                           double pdblVal, String pstrComments);
 
     /*------------------------------------------------------------------------------
      * Public methods
@@ -155,7 +155,7 @@ public interface INIFile {
 
     boolean containProperty(String pstrSection, String pstrProp);
 
-    int getTotalSections();
+//    int getTotalSections();
 
     /**
      * Returns a string array containing names of all sections in INI file.
@@ -177,25 +177,25 @@ public interface INIFile {
      */
     Map getProperties(String pstrSection);
 
-    /**
-     * Removed specified property from the specified section. If the specified
-     * section or the property does not exist, does nothing.
-     * @param pstrSection the section name.
-     * @param pstrProp the name of the property to be removed.
-     */
-    void removeProperty(String pstrSection, String pstrProp);
+//    /**
+//     * Removed specified property from the specified section. If the specified
+//     * section or the property does not exist, does nothing.
+//     * @param pstrSection the section name.
+//     * @param pstrProp the name of the property to be removed.
+//     */
+//    void removeProperty(String pstrSection, String pstrProp);
 
     /**
      * Removes the specified section if one exists, otherwise does nothing.
      * @param pstrSection the name of the section to be removed.
      */
     void removeSection(String pstrSection);
-
-    /**
-     * Flush changes back to the disk file. If the disk file does not exists then
-     * creates the new one.
-     */
-    boolean save();
+//
+//    /**
+//     * Flush changes back to the disk file. If the disk file does not exists then
+//     * creates the new one.
+//     */
+//    boolean save();
 
     void loadForeignComponentsSet(Map<CharSequence, CharSequence> foreignComponents, String section, String extraPrefix);
 }
